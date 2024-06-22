@@ -1,0 +1,43 @@
+﻿@model IEnumerable<DocEditor.Models.Doc>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <a asp-action="Create" style="text-decoration:none; color:black; font-size:calc(2rem + 1vw)">
+    <div class="card" style="width: 10rem;">
+        <div class="card-body text-center" style="background-color:lightgray;">
+            <p style="font-size:calc(2rem + 2vw);">+</p>
+        </div>
+    </div>
+    </a>
+
+<hr />
+
+<div class="row">
+    @{
+        var items = Model.Count();
+        if(items == 0)
+        {
+                <img src="~/images/8055.jpg" class="col-8 col-md-4 mx-auto"/>
+            
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-4">
+                    <a asp-action="Edit" asp-route-id="@item.Id" style="text-decoration:none; color:black;">
+                        <div class="card h-100">
+                            <div class="card-body text-center" style="background-color:lightblue;">
+                                <p class="display-2">📃</p>
+                            </div>
+                        </div>
+                    </a>
+                    <span class="d-block text-center font-weight-bold">@item.Title</span>
+                </div>
+            }
+        }
+    }
+    
+</div>
